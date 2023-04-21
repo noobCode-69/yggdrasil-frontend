@@ -1,7 +1,7 @@
 import { logoutUser } from "./authActions";
 export const SUBMIT_TEST_REQUEST = "SUBMIT_TEST_REQUEST";
 export const SUBMIT_TEST_SUCCESS = "SUBMIT_TEST_SUCCESS";
-export const SUBMIT_TEST_FAILURE = "SUBMIT_TEST_FAILURE"
+export const SUBMIT_TEST_FAILURE = "SUBMIT_TEST_FAILURE";
 export const ASSIGNED_TEST_REQUEST = "ASSIGNED_TEST_REQUEST";
 export const ASSIGNED_TEST_SUCCESS = "ASSIGNED_TEST_SUCCESS";
 export const ASSIGNED_TEST_FAILURE = "ASSIGNED_TEST_FAILURE";
@@ -64,7 +64,10 @@ export const submitTest = (values) => (dispatch) => {
 
     body: JSON.stringify(values),
   };
-  fetch(process.env.BACKEND_BASE_URI +  "/teacher/create-test", requestOptions)
+  fetch(
+    process.env.REACT_APP_BACKEND_BASE_URI + "/teacher/create-test",
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {
@@ -91,10 +94,13 @@ export const fetchAssignedTests = (profileID) => async (dispatch) => {
     },
   };
 
-  await fetch(process.env.BACKEND_BASE_URI +  `/teacher/tests/${profileID}`, requestOptions)
+  await fetch(
+    process.env.REACT_APP_BACKEND_BASE_URI + `/teacher/tests/${profileID}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
-      console.log("data", data)
+      console.log("data", data);
       if (data) {
         if (data?.error?.name === "TokenExpiredError") {
           dispatch(logoutUser());

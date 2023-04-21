@@ -57,7 +57,8 @@ export const updateTimeSpentByStudent = (values) => (dispatch) => {
   };
 
   fetch(
-    process.env.BACKEND_BASE_URI + `/student/update-test-status/${testID}`,
+    process.env.REACT_APP_BACKEND_BASE_URI +
+      `/student/update-test-status/${testID}`,
     requestOptions
   )
     .then((response) => response.json())

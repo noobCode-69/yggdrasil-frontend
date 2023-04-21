@@ -31,7 +31,7 @@ export const fetchClasses = (values) => (dispatch) => {
       Authorization: `${localStorage.getItem("token")}`,
     },
   };
-  fetch(process.env.BACKEND_BASE_URI + "/teacher/classes", requestOptions)
+  fetch(process.env.REACT_APP_BACKEND_BASE_URI  +   "/teacher/classes", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {

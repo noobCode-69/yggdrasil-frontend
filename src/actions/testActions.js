@@ -76,7 +76,8 @@ export const fetchAttemptTests = (profileID) => async (dispatch) => {
   };
 
   await fetch(
-    process.env.BACKEND_BASE_URI + `/student/attempt-tests/${profileID}`,
+    process.env.REACT_APP_BACKEND_BASE_URI +
+      `/student/attempt-tests/${profileID}`,
     requestOptions
   )
     .then((response) => response.json())
@@ -107,7 +108,7 @@ export const fetchTests = (className) => async (dispatch) => {
   };
 
   await fetch(
-    process.env.BACKEND_BASE_URI + `/student/tests/${className}`,
+    process.env.REACT_APP_BACKEND_BASE_URI + `/student/tests/${className}`,
     requestOptions
   )
     .then((response) => response.json())
@@ -168,7 +169,7 @@ export const submitTest = (data) => async (dispatch) => {
   };
 
   await fetch(
-    process.env.BACKEND_BASE_URI + `/student/submit-test/${testID}`,
+    process.env.REACT_APP_BACKEND_BASE_URI + `/student/submit-test/${testID}`,
     requestOptions
   )
     .then((response) => response.json())
@@ -201,7 +202,7 @@ export const fetchTeacherTests = (profileID) => async (dispatch) => {
   };
 
   await fetch(
-    process.env.BACKEND_BASE_URI + `/teacher/tests/${profileID}`,
+    process.env.REACT_APP_BACKEND_BASE_URI + `/teacher/tests/${profileID}`,
     requestOptions
   )
     .then((response) => response.json())
