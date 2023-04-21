@@ -14,8 +14,6 @@ export const SEND_PASS_RESET_ERROR = "SEND_PASS_RESET_ERROR";
 export const SEND_PASS_RESET_SUCCESS = "SEND_PASS_RESET_SUCCESS";
 export const USER_ACCOUNT_CREATED = "USER_ACCOUNT_CREATED";
 
-
-
 const requestLogin = () => {
   return {
     type: LOGIN_REQUEST,
@@ -124,7 +122,7 @@ export const loginUser = (values) => (dispatch) => {
     body: JSON.stringify(values),
   };
 
-  fetch(`${process.env.BACKEND_BASE_URI}/user/login`, requestOptions)
+  fetch(`/user/login`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
@@ -150,7 +148,7 @@ export const signUpUser = (values) => (dispatch) => {
     },
     body: JSON.stringify(values),
   };
-  fetch(`${process.env.BACKEND_BASE_URI}/user/signup`, requestOptions)
+  fetch(`/user/signup`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
@@ -158,7 +156,7 @@ export const signUpUser = (values) => (dispatch) => {
       }
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
       dispatch(signupError());
     });
 };
@@ -167,10 +165,7 @@ export const accountCreated = () => (dispatch) => {
   dispatch(userAccountCreated());
 };
 
-
-
 export const logoutUser = () => (dispatch) => {
   dispatch(requestLogout());
   dispatch(receiveLogout());
 };
-
