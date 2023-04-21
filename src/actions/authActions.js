@@ -122,7 +122,7 @@ export const loginUser = (values) => (dispatch) => {
     body: JSON.stringify(values),
   };
 
-  fetch(`/user/login`, requestOptions)
+  fetch(process.env.BACKEND_BASE_URI + "user/login", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
@@ -148,7 +148,8 @@ export const signUpUser = (values) => (dispatch) => {
     },
     body: JSON.stringify(values),
   };
-  fetch(`/user/signup`, requestOptions)
+
+  fetch(process.env.BACKEND_BASE_URI + "/user/signup", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {

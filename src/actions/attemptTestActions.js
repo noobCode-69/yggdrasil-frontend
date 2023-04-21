@@ -56,7 +56,10 @@ export const updateTimeSpentByStudent = (values) => (dispatch) => {
     body: JSON.stringify(data),
   };
 
-  fetch(`/student/update-test-status/${testID}`, requestOptions)
+  fetch(
+    process.env.BACKEND_BASE_URI + `/student/update-test-status/${testID}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data) {

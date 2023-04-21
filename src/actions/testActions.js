@@ -75,7 +75,10 @@ export const fetchAttemptTests = (profileID) => async (dispatch) => {
     },
   };
 
-  await fetch(`/student/attempt-tests/${profileID}`, requestOptions)
+  await fetch(
+    process.env.BACKEND_BASE_URI + `/student/attempt-tests/${profileID}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -103,7 +106,10 @@ export const fetchTests = (className) => async (dispatch) => {
     },
   };
 
-  await fetch(`/student/tests/${className}`, requestOptions)
+  await fetch(
+    process.env.BACKEND_BASE_URI + `/student/tests/${className}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {
@@ -161,7 +167,10 @@ export const submitTest = (data) => async (dispatch) => {
     body: JSON.stringify(postedData),
   };
 
-  await fetch(`/student/submit-test/${testID}`, requestOptions)
+  await fetch(
+    process.env.BACKEND_BASE_URI + `/student/submit-test/${testID}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -191,8 +200,10 @@ export const fetchTeacherTests = (profileID) => async (dispatch) => {
     },
   };
 
-  // console.log('helllo')
-  await fetch(`/teacher/tests/${profileID}`, requestOptions)
+  await fetch(
+    process.env.BACKEND_BASE_URI + `/teacher/tests/${profileID}`,
+    requestOptions
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -204,10 +215,7 @@ export const fetchTeacherTests = (profileID) => async (dispatch) => {
       }
     })
     .catch((error) => {
-      //Do something with the error if you want!
       console.log("Do something with the error if you want");
       dispatch(testsTeacherError());
     });
-
-    // console.log("world")
 };
